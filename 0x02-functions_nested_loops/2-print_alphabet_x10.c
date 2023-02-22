@@ -1,16 +1,17 @@
 #include "main.h"
 
 /**
- * print_alphabet - a function that prints the alphabet, in lowercase
+ * print_alphabet - a function that prints 10x the alphabet, in lowercase
  *
  * Return: Always 0 (Succes)
  */
 void print_alphabet(void)
 
 {
-	int m, n;
+	int m;
+	char n;
 
-	for (m = 0; m < 10; m++)
+	for (m = 0; m <= 10; m++)
 	{
 		for (n = 'a'; n <= 'z'; n++)
 			_putchar(n);
