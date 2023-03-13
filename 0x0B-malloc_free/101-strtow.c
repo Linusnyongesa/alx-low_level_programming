@@ -38,35 +38,31 @@ char **strtow(char *str)
 	wordCount = 0;
 	letter = 0;
 
-
 	while (str[counter] != '\0')
 	{
-			if (str[counter] != ' ' && !letter)
+		if (str[counter] != ' ' && !letter)
+		{
+			strArr[wordCount] = first_word(str + wordCount);
+			if (!strArr[counter])
 			{
-				strArr[wordCount] = first_word(str + wordCount);
-				if (!strArr[counter])
-				{
-					wordCount--;
-					while (wordCount >= 0)
-						free(*(strArr + wordCount--));
-					free(strArr);
-					return (NULL);
-				}
-				wordCount++;
-				letter = 1;
+				wordCount--;
+				while (wordCount >= 0)
+					free(*(strArr + wordCount--));
+				free(strArr);
+				return (NULL);
 			}
-			else if (*(str + counter) == ' ' && letter)
-				letter = 0;
-			counter++;
-
+			wordCount++;
+			letter = 1;
+		}
+		else if (*(str + counter) == ' ' && letter)
+			letter = 0;
+		counter++;
 		if (!wordCount)
 			return (NULL);
-
 		return (strArr);
-
-		xif (str[wordCount] != ' ' && !letter)
+		if (str[wordCount] != ' ' && !letter)
 		{
-		       strArr[counter] = first_word(str + counter);
+			strArr[counter] = first_word(str + counter);
 			if (!strArr[counter])
 			{
 				wordCount--;
@@ -84,7 +80,6 @@ char **strtow(char *str)
 	}
 	if (!wordCount)
 		return (NULL);
-
 	return (strArr);
 }
 
