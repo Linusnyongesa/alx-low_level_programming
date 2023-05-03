@@ -5,28 +5,24 @@
  *
  */
 
-size_t print_listint(const listint_t *head)
+size_t print_listint(const listint_t *h)
 {
-    const listint_t *current = head; 
+	size_t nodes = 0;	
 /*
  * set a pointer to the head of the list
  *
  */
 
-    while (current != NULL) { 
-/*
- * iterate until the end of the list is reached
- *
- */
-	printf("%d\n", current->n); 
-/*
- * print the current node's integer value
- *
- */
-	current = current->next; 
+    while (h) 
+    {
+	    nodes++;
+	    printf("%d\n",  h->n);
+	    h = h->next ;
 /*
  * move to the next node
  *
  */
-    }
-}
+	}
+
+	return (nodes);
+}	
