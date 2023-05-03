@@ -1,28 +1,24 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "lists.h"
 
 /**
- * main - check the code
- *
- * adds nodes to the beginning of the list
- *
- * print the values in the list
- *
- * Return: Always 0.
+ * Adds a new node at the beginning of a listint_t list.
+ * A pointer to the address of the head of the listint_t list.
+ * The integer for the new node to contain.
+ * Return: If the function fails - NULL.
+ * Otherwise - the address of the new element.
  */
-int main(void)
+listint_t *add_nodeint(listint_t **head, const int n)
 {
-	listint_t *head = NULL;
+	listint_t *new_node;
 
-	add_nodeint(&head, 1);
-	add_nodeint(&head, 2);
-	add_nodeint(&head, 3);
-	for (listint_t *node = head;
-	node != NULL; node = node->next)
-	{
-		printf("%d\n", node->n);
-	}
-	return (0);
+	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL)
+		return (NULL);
+
+	new_node->n = n;
+	new_node->next = *head;
+
+	*head = new_node;
+
+	return (new_node);
 }
